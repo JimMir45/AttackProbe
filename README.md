@@ -1,63 +1,159 @@
-# AttackProbe: 攻击模拟有效性验证平台
+# AttackProbe
 
-> BAS (Breach and Attack Simulation) 开源安全验证平台
+> Open-source Security Validation Platform | 开源安全验证平台
 
-## 项目概述
+AttackProbe 是一个综合性的开源安全项目，包含三大核心模块：
 
-AttackProbe 是一款开源的自动化攻击模拟与有效性验证平台，帮助安全团队持续验证防护体系的实际效果。
+- **BAS Platform** - 攻击模拟有效性验证平台
+- **LLM Security** - 大模型安全测试工具
+- **AI Brain** - AI驱动的知识管理工具集
 
-### 核心能力
+## Modules | 模块
 
-| 模块 | 功能 | 状态 |
-|------|------|------|
-| **传统BAS** | 漏洞扫描、渗透模拟、ATT&CK映射 | 规划中 |
-| **LLM安全BAS** | 大模型提示词注入、越狱攻击验证 | 已有MVP |
-| **统一平台** | 资产管理、任务调度、报告中心 | 规划中 |
+### 1. LLM Security (llm-security)
 
-### 差异化定位
+针对大语言模型的自动化安全测试工具。
 
-- **中文原生**：针对国内安全场景和中文LLM优化
-- **轻量部署**：单文件部署，无外部依赖
-- **持续验证**：不是一次性扫描，而是持续的安全态势验证
-- **开源开放**：核心能力开源，支持二次开发
+**Features | 特性:**
+- 58 个内置攻击用例（提示词注入、越狱攻击、敏感信息泄露）
+- 支持 OpenAI 兼容 API（Ollama、vLLM 等）
+- Web UI 可视化界面
+- 自动化结果判定
 
-## 项目状态
+**Quick Start | 快速开始:**
+```bash
+cd packages/llm-security
+go build -o llm-security ./cmd/server/
+./llm-security -port 8080
+```
 
-**当前阶段**: 00-立项
-**目标版本**: v1.0.0
-**计划周期**: 6个月
+**Tech Stack | 技术栈:** Go + Gin + Vue 3 + SQLite
 
-## 团队
+---
 
-- 研发负责人: TBD
-- 研发团队: 4-5人（组建中）
+### 2. AI Brain (ai-brain)
 
-## 目录结构
+AI 驱动的团队知识管理工具集。
+
+**Tools | 工具:**
+
+| Tool | Description |
+|------|-------------|
+| `brain-search` | 全文搜索 - 搜索知识库中的 Markdown 文档 |
+| `brain-ask` | RAG 问答 - 基于向量检索的智能问答 |
+| `brain-archive` | 对话归档 - 自动归档对话为结构化文档 |
+| `brain-decision` | 决策记录 - ADR 架构决策记录管理 |
+
+**Quick Start | 快速开始:**
+```bash
+cd packages/ai-brain/brain-search
+go build -o brain-search .
+./brain-search "关键词"
+```
+
+**Tech Stack | 技术栈:** Go + Ollama (Embeddings)
+
+---
+
+### 3. BAS Platform (规划中)
+
+综合性 BAS (Breach and Attack Simulation) 平台，整合传统安全验证与 LLM 安全验证。
+
+**Planned Features | 规划功能:**
+- 传统漏洞扫描模拟
+- 网络攻击模拟
+- ATT&CK 框架映射
+- 统一任务调度与报告
+
+---
+
+## Project Structure | 项目结构
 
 ```
 AttackProbe/
-├── 00-立项/          # 需求、规划、立项评审
-├── 01-设计/          # 架构设计、技术选型、ADR
-├── 02-开发/          # 开发规范、功能模块、进度
-├── 03-测试/          # 测试用例、测试报告
-├── 04-部署/          # 部署手册、运维文档
-├── 05-运营/          # 用户手册、培训材料、客户反馈
-├── _conversations/   # 重要讨论归档
-└── _decisions/       # 架构决策记录(ADR)
+├── packages/
+│   ├── llm-security/       # LLM 安全测试模块
+│   │   ├── cmd/            # 程序入口
+│   │   ├── internal/       # 内部实现
+│   │   ├── pkg/            # 公共包
+│   │   └── web/            # 前端源码
+│   └── ai-brain/           # AI 知识管理工具
+│       ├── brain-search/   # 全文搜索
+│       ├── brain-ask/      # RAG 问答
+│       ├── brain-archive/  # 对话归档
+│       └── brain-decision/ # 决策记录
+├── docs/                   # 项目文档
+│   ├── 00-立项/            # 立项文档
+│   ├── 01-设计/            # 设计文档
+│   └── ...
+└── LICENSE
 ```
 
-## 快速链接
+---
 
-- [六个月工作计划](./00-立项/六个月工作计划.md)
-- [产品需求说明书](./00-立项/产品需求说明书.md)
-- [技术栈评估](./01-设计/技术栈评估.md)
-- [系统架构设计](./01-设计/系统架构设计.md)
+## Why AttackProbe? | 为什么选择 AttackProbe
 
-## 关联项目
+| Feature | Description |
+|---------|-------------|
+| **中文原生** | 专为中文安全场景和中文 LLM 优化 |
+| **轻量部署** | 单文件部署，无外部依赖 |
+| **开源开放** | MIT License，欢迎贡献 |
+| **模块化** | 各模块可独立使用或组合 |
 
-- [ai-brain](../../) - 知识管理系统
-- [llm-security-bas](../llm-security-bas/) - LLM安全模块（已有MVP）
+---
+
+## Getting Started | 快速开始
+
+### Prerequisites | 环境要求
+
+- Go 1.22+
+- Node.js 18+ (前端构建)
+- Ollama (可选，用于 RAG 和 LLM 测试)
+
+### Build | 构建
+
+```bash
+# 构建 LLM Security
+cd packages/llm-security
+go build -o llm-security ./cmd/server/
+
+# 构建 AI Brain 工具
+cd packages/ai-brain/brain-search
+go build -o brain-search .
+```
+
+---
+
+## Contributing | 贡献
+
+欢迎贡献代码、文档、Issue 和建议！
+
+- **安全研究者**: 贡献攻击用例、检测规则
+- **LLM 爱好者**: 改进提示词攻击库、支持更多模型
+- **知识管理爱好者**: 改进 AI Brain 工具、添加新功能
+
+详见 [CONTRIBUTING.md](./CONTRIBUTING.md) (即将添加)
+
+---
+
+## Roadmap | 路线图
+
+- [x] LLM Security MVP (58 攻击用例)
+- [x] AI Brain 工具集 (search/ask/archive/decision)
+- [ ] 统一 BAS 平台
+- [ ] 传统 BAS 攻击模块
+- [ ] ATT&CK 映射
+- [ ] 多语言支持
+
+---
 
 ## License
 
-MIT License
+[MIT License](./LICENSE)
+
+---
+
+## Links | 链接
+
+- **Issues**: [GitHub Issues](https://github.com/JimMir45/AttackProbe/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/JimMir45/AttackProbe/discussions)
