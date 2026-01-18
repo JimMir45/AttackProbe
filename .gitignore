@@ -40,3 +40,7 @@ Thumbs.db
 
 # Claude Code context files
 CLAUDE.md
+
+# Internal planning docs (keep local only)
+docs/bas-platform/00-立项/里程碑清单.md
+docs/bas-platform/00-立项/六个月工作计划.md
