@@ -75,6 +75,32 @@ BAS (Breach and Attack Simulation，入侵与攻击模拟) 是一种**自动化�
 - 5G 核心网安全验证
 - 物联网设备安全
 
+### 2.3 互联网行业
+
+**行业特点:**
+- 业务迭代快，安全债务累积
+- 云原生架构为主 (微服务、容器、K8s)
+- 用户规模大，数据价值高
+- API 暴露面广，第三方集成多
+- AI/LLM 应用落地快
+
+**高优先级威胁场景:**
+
+| 威胁类型 | ATT&CK 战术 | 典型攻击 |
+|---------|------------|---------|
+| API 滥用 | TA0001/TA0009 | 未授权访问、数据爬取 |
+| 账号接管 | TA0006 | 撞库攻击、凭据泄露利用 |
+| 数据泄露 | TA0010 | 用户隐私外泄、商业数据窃取 |
+| 供应链攻击 | TA0001 | 开源组件漏洞、CI/CD 污染 |
+| LLM 攻击 | - | 提示词注入、模型越狱 |
+
+**互联网行业 BAS 重点:**
+- Web/API 安全测试 (OWASP Top 10)
+- 云环境安全验证 (AWS/阿里云/腾讯云)
+- 容器和 K8s 安全
+- LLM 应用安全测试
+- 供应链安全 (SCA)
+
 ---
 
 ## 3. 市场格局
@@ -119,41 +145,41 @@ MITRE ATT&CK Enterprise 包含 **14 个战术、203 个技术、453 个子技术
 
 ### 4.2 直接覆盖的技术 (50%)
 
-基于金融和运营商行业需求，优先覆盖以下技术：
+基于金融、运营商、互联网三大目标行业需求，优先覆盖以下技术：
 
 #### 第一优先级 - 核心 50 技术
 
-| 战术 | 技术 ID | 技术名称 | 金融 | 运营商 |
-|------|--------|---------|------|-------|
-| **Initial Access** | T1566 | Phishing | ★★★ | ★★ |
-| | T1190 | Exploit Public-Facing App | ★★★ | ★★★ |
-| | T1078 | Valid Accounts | ★★★ | ★★ |
-| **Execution** | T1059 | Command and Scripting | ★★ | ★★ |
-| | T1204 | User Execution | ★★★ | ★★ |
-| **Persistence** | T1547 | Boot/Logon Autostart | ★★ | ★★ |
-| | T1053 | Scheduled Task/Job | ★★ | ★★ |
-| | T1136 | Create Account | ★★ | ★★ |
-| **Privilege Escalation** | T1548 | Abuse Elevation Control | ★★ | ★★ |
-| | T1068 | Exploitation for Privilege | ★★ | ★★ |
-| **Defense Evasion** | T1027 | Obfuscated Files | ★★ | ★★ |
-| | T1070 | Indicator Removal | ★★ | ★★ |
-| | T1055 | Process Injection | ★★ | ★ |
-| **Credential Access** | T1003 | OS Credential Dumping | ★★★ | ★★ |
-| | T1110 | Brute Force | ★★★ | ★★ |
-| | T1552 | Unsecured Credentials | ★★★ | ★★ |
-| **Discovery** | T1082 | System Information | ★★ | ★★ |
-| | T1083 | File and Directory | ★★ | ★★ |
-| | T1046 | Network Service Scan | ★★ | ★★★ |
-| **Lateral Movement** | T1021 | Remote Services | ★★ | ★★★ |
-| | T1570 | Lateral Tool Transfer | ★★ | ★★★ |
-| **Collection** | T1005 | Data from Local System | ★★★ | ★★ |
-| | T1560 | Archive Collected Data | ★★ | ★★ |
-| **C2** | T1071 | Application Layer Protocol | ★★ | ★★ |
-| | T1105 | Ingress Tool Transfer | ★★ | ★★ |
-| **Exfiltration** | T1041 | Exfiltration Over C2 | ★★★ | ★★ |
-| | T1048 | Exfiltration Over Alternative | ★★★ | ★★ |
-| **Impact** | T1486 | Data Encrypted (Ransomware) | ★★★ | ★★ |
-| | T1489 | Service Stop | ★★ | ★★★ |
+| 战术 | 技术 ID | 技术名称 | 金融 | 运营商 | 互联网 |
+|------|--------|---------|------|-------|-------|
+| **Initial Access** | T1566 | Phishing | ★★★ | ★★ | ★★ |
+| | T1190 | Exploit Public-Facing App | ★★★ | ★★★ | ★★★ |
+| | T1078 | Valid Accounts | ★★★ | ★★ | ★★★ |
+| **Execution** | T1059 | Command and Scripting | ★★ | ★★ | ★★ |
+| | T1204 | User Execution | ★★★ | ★★ | ★★ |
+| **Persistence** | T1547 | Boot/Logon Autostart | ★★ | ★★ | ★ |
+| | T1053 | Scheduled Task/Job | ★★ | ★★ | ★★ |
+| | T1136 | Create Account | ★★ | ★★ | ★★★ |
+| **Privilege Escalation** | T1548 | Abuse Elevation Control | ★★ | ★★ | ★★ |
+| | T1068 | Exploitation for Privilege | ★★ | ★★ | ★★ |
+| **Defense Evasion** | T1027 | Obfuscated Files | ★★ | ★★ | ★ |
+| | T1070 | Indicator Removal | ★★ | ★★ | ★★ |
+| | T1055 | Process Injection | ★★ | ★ | ★ |
+| **Credential Access** | T1003 | OS Credential Dumping | ★★★ | ★★ | ★ |
+| | T1110 | Brute Force | ★★★ | ★★ | ★★★ |
+| | T1552 | Unsecured Credentials | ★★★ | ★★ | ★★★ |
+| **Discovery** | T1082 | System Information | ★★ | ★★ | ★★ |
+| | T1083 | File and Directory | ★★ | ★★ | ★★ |
+| | T1046 | Network Service Scan | ★★ | ★★★ | ★★ |
+| **Lateral Movement** | T1021 | Remote Services | ★★ | ★★★ | ★★ |
+| | T1570 | Lateral Tool Transfer | ★★ | ★★★ | ★★ |
+| **Collection** | T1005 | Data from Local System | ★★★ | ★★ | ★★★ |
+| | T1560 | Archive Collected Data | ★★ | ★★ | ★★ |
+| **C2** | T1071 | Application Layer Protocol | ★★ | ★★ | ★★ |
+| | T1105 | Ingress Tool Transfer | ★★ | ★★ | ★★ |
+| **Exfiltration** | T1041 | Exfiltration Over C2 | ★★★ | ★★ | ★★★ |
+| | T1048 | Exfiltration Over Alternative | ★★★ | ★★ | ★★ |
+| **Impact** | T1486 | Data Encrypted (Ransomware) | ★★★ | ★★ | ★★ |
+| | T1489 | Service Stop | ★★ | ★★★ | ★★★ |
 
 #### 第二优先级 - 扩展 50 技术
 
@@ -293,19 +319,21 @@ MITRE ATT&CK Enterprise 包含 **14 个战术、203 个技术、453 个子技术
     └── SIEM/SOAR 集成
 ```
 
-### 6.2 功能优先级 (金融/运营商)
+### 6.2 功能优先级 (三大目标行业)
 
-| 优先级 | 功能 | 金融 | 运营商 | 说明 |
-|-------|------|------|-------|------|
-| P0 | LLM 安全模块 | ★★ | ★★ | 已有，差异化竞争力 |
-| P0 | Web 攻击模拟 | ★★★ | ★★ | 网银/门户安全 |
-| P0 | 钓鱼模拟 | ★★★ | ★★ | 员工安全意识 |
-| P1 | 网络攻击模拟 | ★★ | ★★★ | 边界防护 |
-| P1 | ATT&CK 映射 | ★★★ | ★★★ | 合规要求 |
-| P1 | 数据泄露模拟 | ★★★ | ★★★ | DLP 验证 |
-| P2 | 端点攻击模拟 | ★★ | ★★ | 需要 Agent |
-| P2 | 邮件攻击模拟 | ★★ | ★ | 需要邮件基础设施 |
-| P3 | SIEM/SOAR 集成 | ★★★ | ★★★ | 企业级需求 |
+| 优先级 | 功能 | 金融 | 运营商 | 互联网 | 说明 |
+|-------|------|------|-------|-------|------|
+| P0 | LLM 安全模块 | ★★ | ★★ | ★★★ | 已有，差异化竞争力 |
+| P0 | Web/API 攻击模拟 | ★★★ | ★★ | ★★★ | 网银/门户/API 安全 |
+| P0 | 钓鱼模拟 | ★★★ | ★★ | ★★ | 员工安全意识 |
+| P1 | 网络攻击模拟 | ★★ | ★★★ | ★★ | 边界防护 |
+| P1 | ATT&CK 映射 | ★★★ | ★★★ | ★★ | 合规要求 |
+| P1 | 数据泄露模拟 | ★★★ | ★★★ | ★★★ | DLP 验证 |
+| P1 | 云安全验证 | ★★ | ★★ | ★★★ | 云原生环境 |
+| P2 | 端点攻击模拟 | ★★ | ★★ | ★ | 需要 Agent |
+| P2 | 邮件攻击模拟 | ★★ | ★ | ★ | 需要邮件基础设施 |
+| P2 | 容器/K8s 安全 | ★ | ★★ | ★★★ | 云原生架构 |
+| P3 | SIEM/SOAR 集成 | ★★★ | ★★★ | ★★ | 企业级需求 |
 
 ---
 
@@ -319,7 +347,7 @@ MITRE ATT&CK Enterprise 包含 **14 个战术、203 个技术、453 个子技术
 | 开源 BAS (Caldera) | 更易用的 UI，LLM 安全独有，中文支持 |
 | LLM 安全工具 (Garak) | 更完整的 BAS 能力，企业级功能 |
 
-**定位**: **面向金融和运营商行业的开源 BAS 平台，整合传统安全 + LLM 安全验证能力**
+**定位**: **面向金融、运营商、互联网行业的开源 BAS 平台，整合传统安全 + LLM 安全验证能力**
 
 ### 7.2 技术选型建议
 
@@ -350,3 +378,4 @@ MITRE ATT&CK Enterprise 包含 **14 个战术、203 个技术、453 个子技术
 |------|------|---------|------|
 | 2026-01-18 | v1.0 | 初稿创建 | SecOps Team |
 | 2026-01-18 | v1.1 | 增加目标行业分析，明确50%覆盖策略 | SecOps Team |
+| 2026-01-18 | v1.2 | 补充互联网行业分析，完善三大目标行业覆盖 | SecOps Team |
